@@ -183,17 +183,13 @@ public class weather_location extends AppCompatActivity {
                                 Day = simpleDateFormat.format(date);
                                 tv_sunset.setText("Mặt trời lặn: " + Day);
                                 tv_country.setText(formatted_address);
-                                tvGoiY.setText("null");
+                                tvGoiY.setText("Chú ý thời tiết khi ra ngoài và mang đầy đủ các dụng cụ cá nhân !!!");
                                 for (int i = 0; i < Notes.size(); i++) {
                                     if (status.equals(Notes.get(i).getWeather())) {
                                         tvGoiY.setText(Notes.get(i).getGoiY());
                                         break;
                                     }
                                 }
-                                if (tvGoiY.equals("null")) {
-                                    tvGoiY.setText("Chú ý thời tiết khi ra ngoài và mang đầy đủ các dụng cụ cá nhân!!!");
-                                }
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

@@ -73,48 +73,16 @@ public class Seven_day_details extends AppCompatActivity {
         tv_sunset.setText("Mặt trời lặn: " + intent.getStringExtra("sunset"));
         String icon = intent.getStringExtra("image");
         Picasso.get().load("http://openweathermap.org/img/wn/" + icon + ".png").into(img_status);
-//        if(intent.getStringExtra("status").equals("mây cụm")){
-//            tv_goiy.setText("Chú ý: Thời tiết nhiều mây dễ mưa. Nên mang ô hoặc áo mưa khi ra ngoài. " +
-//                    "\n -- Thời tiết đẹp để ra ngoài uống cafe với bạn bè.");
-//        }else if (intent.getStringExtra("status").equals("mây rải rác")){
-//            tv_goiy.setText("Nhắc nhở: Thời tiết ít mây, nắng chiếu vừa ra ngoài nên mang theo mũ và áo chống nắng để bảo vệ cơ thể" +
-//                    "\n -- Trời đẹp dành cho những chuyến picnic và dã ngoại, thích hợp với những buổi tham quan và đi chơi xa.");
-//        }else if (intent.getStringExtra("status").equals("bầu trời quang đãng")){
-//            tv_goiy.setText("Chú ý: THời tiết ít mây đôi lúc không có, nắng chiếu gay gắt. " +
-//                    "\n -- Đề nghị: Hạn chế ra ngoài, nếu ra ngoài cần trang bị đầy đủ(áo, mũ, áo trùm, che mặt...) tránh ánh nắng chiếu trực tiếp." +
-//                    "\n -- Nắng lớn thích hợp với việc ở trong nhà làm việc và giặt giũ đồ dùng.");
-//        }else if (intent.getStringExtra("status").equals("mưa vừa")){
-//            tv_goiy.setText("Chú ý: Thời tiết có mưa, mưa thường xuyên. " +
-//                    "\n -- Ra ngoài nên mang theo áo mưu hoặc ô, ưu tiên di chuyển trên các phương tiện có mái che(xe bus, ô tô, ...) " +
-//                    " \n -- Thời tiết thích hợp với việc ở nhà nấu ăn và thực hiện các sở thích có thể làm trong nhà.");
-//        }else if (intent.getStringExtra("status").equals("mưa cường độ nặng")){
-//            tv_goiy.setText("Chú ý: Mưa to, mưa lớn không thích hợp ra ngoài nên hạn chế ra ngoài tối đa. Nếu cần di chuyển ưu tiên " +
-//                    " các phương tiện có mái che(xe bus, ô tô, ...).");
-//        }else if (intent.getStringExtra("status").equals("mưa nhẹ")){
-//            tv_goiy.setText("Nhắc nhở: Thời tiết có mưa, mưa lâm thâm, ra ngoài nên mang theo ô. " +
-//                    "\n -- Thời tiết thích hợp đi dạo, đi chơi với bạn bè");
-//        }else if (intent.getStringExtra("status").equals("mây đen u ám")){
-//            tv_goiy.setText("Chú ý: Trời râm, rất nhiều mây, có khả năng mưa đột ngột. Đề nghị mang theo ô hoặc áo mưa khi ra ngoài" +
-//                    "\n -- Hạn chế ra đường vì có thể mưa bất chợt từ mưa vừa tới mưa to. " +
-//                    "\n -- Ưu tiên làm các buối party tại nhà.");
-//        }else if (intent.getStringExtra("status").equals("mây thưa")){
-//            tv_goiy.setText("Nhắc nhở: Thời tiết ít mây, nắng chiếu vừa ra ngoài nên mang theo mũ và áo chống nắng để bảo vệ cơ thể" +
-//                    "\n -- Trời đẹp dành cho những chuyến picnic và dã ngoại, thích hợp với những buổi tham quan và đi chơi xa.");
-//        }else {
-//            tv_goiy.setText("Chú ý thời tiết khi ra ngoài và mang đầy đủ các dụng cụ cá nhân!!!");
-//        }
         final ArrayList<GoiY> goiYS = dbh.getAllNotes();
-        tv_goiy.setText("null");
-        for (int i=0;i<goiYS.size();i++){
-            if (intent.getStringExtra("status").equals(goiYS.get(i).getWeather())){
+        tv_goiy.setText("Chú ý thời tiết khi ra ngoài và mang đầy đủ các dụng cụ cá nhân !!!");
+        for (int i = 0; i < goiYS.size(); i++) {
+            if (intent.getStringExtra("status").equals(goiYS.get(i).getWeather())) {
                 tv_goiy.setText(goiYS.get(i).getGoiY());
                 break;
             }
         }
-        if (tv_goiy.equals("null")) {
-            tv_goiy.setText("Chú ý thời tiết khi ra ngoài và mang đầy đủ các dụng cụ cá nhân!!!");
-        }
     }
+
     protected void onStart() {
         super.onStart();
         dbh.openDB();
